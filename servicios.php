@@ -34,9 +34,18 @@ class Conexion {
 }		
 
 $dbi=Conexion::getInstancia();   // dame una instancia conexion
+global $db;     // para acceder desde las clases/funciones a la conexión
 $db = $dbi->getConexion();
-function getValorParametro($id,$db){
+
+function getValorParametro($id){
+  global $db;
  $resp = $db->query("SELECT valor FROM valorParametros WHERE idValorParametro=$id");
  $row = $resp->fetch(PDO::FETCH_ASSOC);
  return $row["valor"];
+}
+
+function getParametros($id){
+  global $db;
+  $resp = $db->query("SELECT idValorParametro,valor FROM valorParametros WHERE idParametro=$id and estadoValorPArametro='A' order by orden");
+  return  $resp->fetchAll(PDO::FETCH_ASSOC);  
 }

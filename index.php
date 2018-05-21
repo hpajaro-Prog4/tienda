@@ -1,19 +1,24 @@
 <?php 
-    //session_start(); 
+    session_start(); 
     require_once("servicios.php"); 
-    $rutas = array("view/producto/listar", "view/carrito/mostrar");
+    $rutas = array("view/producto/index", "view/carrito/mostrar","view/producto/listar",
+                    "view/producto/create");
     if(isset($_GET['pag'])){                  
        $pag =$_GET['pag'];       
     }else{           
         $pag = 0;           
     } 
-  
+    if (isset($_SESSION["ncar"]))
+          $ncar= $_SESSION["ncar"];
+      else 
+      	$ncar=0;
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Comprando.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
@@ -21,19 +26,19 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 logo">
+			<div class="col-md-2 logo pl-1">
               Comprando.co           
   			</div>
-	  		<div class="col-lg-9">
+	  		<div class="col-md-10">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid ">  
 	  			<div class="collapse navbar-collapse" id="navbarSupportedContent ">
 				   <ul class="navbar-nav">      
 				      <li class="nav-item">
-				          <a class="nav-link ml-0" href="#"><i class="fa fa-home"></i> Inicio</a>
+				          <a class="nav-link ml-0" href="index.php"><i class="fa fa-home"></i> Inicio</a>
 				      </li>
 				       
 				      <li class="nav-item">
-				        <a class="nav-link ml-1 pl-0" href="index.php?pag=1"><i class="fa fa-shopping-cart"></i> Ver Carrito (00)</a>
+				        <a class="nav-link ml-1 pl-0" href="index.php?pag=1"><i class="fa fa-shopping-cart"></i> Ver Carrito (<?php echo $ncar;?>)</a>
 				      </li>
 				      <li class="nav-item ml-3">
 				         <a href="index.php" class="nav-link">Productos</a>
@@ -47,7 +52,7 @@
 				          <i class="fa fa-building"></i> Admin
 				        </a>
 				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" href="#">Productos</a>
+				          <a class="dropdown-item" href="index.php?pag=2">Productos</a>
 				          <a class="dropdown-item" href="#">Clientes</a>
 				           <a class="dropdown-item" href="#">Facturas</a>    
 				              <a class="dropdown-item" href="controller/cerrarSesion.php">Cerrar Sesión</a>      

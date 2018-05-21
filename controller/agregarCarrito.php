@@ -13,6 +13,7 @@ include_once("../model/carrito.php");
 	      $carrito=array();	      
 	}
 	array_push($carrito, $car);
+	$_SESSION['ncar']=count($carrito);
 	$_SESSION['carrito']=$carrito;
-	
+		
     header("location:http://localhost/tienda");

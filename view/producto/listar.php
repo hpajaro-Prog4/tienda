@@ -1,39 +1,38 @@
-<div class="contenedor">
 <?php
-   $filas = $db->query("SELECT * FROM productos");
-   while($reg = $filas->fetch(PDO::FETCH_ASSOC)) {
+  include_once("model/producto.php");
+  $p= new Producto();
+  $productos=$p->listar();
+
 ?>
-		<div class="card p-1 ancho m-3">
-		  <!-- <img class="card-img-top" src="" alt="Card image cap"> -->
-		  <div class="text-center"> <img src="imagenes/<?php echo $reg["Imagen"] ?>"></div>		 
-		  <div class="card-body p-1">
-		    <h6 class="card-title"><?php echo $reg["Nombre"] ?></h6>
-		    <p class="card-text t2"><?php echo $reg["Descripcion"] ?></p>
-		  </div>
-		  <ul class="list-group list-group-flush p-1">
-		    <li class="list-group-item"><span class="font-weight-bold text-primary">PRECIO:</span><?php echo $reg["Precio"] ?></li>
-		    <li class="list-group-item">
-		       <p class="card-text t2 m-0 p-0">Stock :<?php echo $reg["Stock"] ?>
-               <p class="card-text t2 m-0 p-0">Tipo :<?php echo getValorParametro($reg["idTipoProducto"],$db) ?></p>
-		       <p class="card-text t2 m-0 p-0">Categoría :<?php echo getValorParametro($reg["idCategoriaProducto"],$db) ?></p>
-		   </li>
-
-		  </ul>
-		  <div class="card-body p-1 text-center">
-		  	<form action="controller/agregarCarrito.php" method="POST">
-		  		Cant : <input type="number" name="cant" value="1" Style="height:28px;width:40px;">
-		  		<input type="hidden" name="id" value="<?php echo $reg['idProducto'];?>">
-		  		<input type="hidden" name="nombre" value="<?php echo $reg['Nombre'];?>">
-		  		<input type="hidden" name="precio" value=<?php echo $reg['Precio'];?>">			 
-		        <button type="submit" class="btn btn-primary btn-sm">
-				  <i class="fa fa-plus"></i> Carrito
-		 	    </button>	
-		    </form>
-		  </div>
-		</div>
-
-	<?php 
-
-	}
-?>
-</div>
+<div class="container">
+	<h4>Lista de Productos</h4>
+	<a href="index.php?pag=3" class="btn btn-primary btn-sm mb-2">Nuevo</a>
+<table class="table table-striped">
+  <tr>	
+	<th>ID</th>
+	<th>Nombre</th>
+	<th>Descripcion</th>
+	<th>Tipo</th>
+	<th>Categoria</th>
+	<th>Precio</th>
+	<th>Stock</th>
+	<th>Imagen</th>
+    <th>Estado</th>
+  </tr>  
+ <?php
+   foreach ($productos as $p) {
+	 echo '<tr>';	
+		echo '<td><a href="#">'. $p["idProducto"] . '</a></td>';
+		echo '<td>' . $p["Nombre"] . '</td>';
+		echo '<td>' . $p["Descripcion"] . '</td>';
+		echo '<td>' . getValorParametro($p["idTipoProducto"]) .'</td>';
+		echo '<td>' . getValorParametro($p["idCategoriaProducto"]) .'</td>';
+		echo '<td>' . $p["Precio"] . '</td>';
+		echo '<td>' . $p["Stock"] . '</td>';
+		echo '<td>' . $p["Imagen"] . '</td>';
+	    echo '<td>' . getValorParametro($p["idEstadoProducto"]) . '</td>';
+    echo '</tr>';
+   }
+ ?>
+ </table>
+ </div>

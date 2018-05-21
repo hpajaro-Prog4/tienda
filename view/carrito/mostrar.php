@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 include_once("model/carrito.php");
 if (isset($_SESSION['carrito'])){
      $carrito = $_SESSION['carrito'];   
@@ -27,7 +27,7 @@ if (isset($_SESSION['carrito'])){
 	      }
      echo '</table>';
 }else{
-    echo "<h3> Carrito esta vació </h3>";
+    echo "<h4> Carrito está vació </h4>";
 
 }
 
