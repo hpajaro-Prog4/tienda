@@ -2,7 +2,7 @@
     session_start(); 
     require_once("servicios.php"); 
     $rutas = array("view/producto/index", "view/carrito/mostrar","view/producto/listar",
-                    "view/producto/create");
+                    "view/producto/create","view/producto/update");
     if(isset($_GET['pag'])){                  
        $pag =$_GET['pag'];       
     }else{           

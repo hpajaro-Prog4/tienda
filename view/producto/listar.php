@@ -22,7 +22,7 @@
  <?php
    foreach ($productos as $p) {
 	 echo '<tr>';	
-		echo '<td><a href="#">'. $p["idProducto"] . '</a></td>';
+		echo '<td><a href="index.php?pag=4&id='.$p["idProducto"].'">'. $p["idProducto"] . '</a></td>';
 		echo '<td>' . $p["Nombre"] . '</td>';
 		echo '<td>' . $p["Descripcion"] . '</td>';
 		echo '<td>' . getValorParametro($p["idTipoProducto"]) .'</td>';

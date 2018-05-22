@@ -7,7 +7,7 @@ class Producto extends ModeloBase {
     public $idCategoriaProducto;
     public $idEstadoProducto;
     public $Precio;
-    public $imagen;
+    public $Imagen;
     public $Descripcion;
-    public $stock;	
+    public $Stock;	
 }
