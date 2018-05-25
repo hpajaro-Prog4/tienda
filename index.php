@@ -8,6 +8,7 @@
     }else{           
         $pag = 0;           
     } 
+  
     if (isset($_SESSION["ncar"])){
           $ncar= $_SESSION["ncar"];
     }else{ 
@@ -58,8 +59,10 @@
 				     </li>
 				    </ul>
 				 <?php  
+
 				   if (isset($_SESSION["idRol"])){   // if 1
 				     if ($_SESSION["idRol"] == 26){   // if 2 implementando autorizacion
+
                   ?>
 			      <div class="nav-item dropdown ml-esp">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

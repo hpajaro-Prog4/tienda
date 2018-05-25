@@ -8,9 +8,10 @@ $sql="SELECT * FROM  usuarios  WHERE usuario='" . $usuario."' AND password='" . 
 $stm = $db->prepare($sql);
 $stm->execute();
 $reg=$stm->fetchAll(PDO::FETCH_ASSOC);
+$reg1=$reg[0];
 
-if (count($reg)){
+if (count($reg) > 0){
     $_SESSION['usuario']=$usuario;
-    $_SESSION['idRol'] = $reg['idRol'];
-}
-   header("location: ../../index.php");
+    $_SESSION['idRol'] = $reg1['idRol'];
+   }
+  header("location: ../../index.php");

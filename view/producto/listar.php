@@ -33,6 +33,7 @@
 	    echo '<td>' . getValorParametro($p["idEstadoProducto"]) . '</td>';
     echo '</tr>';
    }
- ?>
- </table>
- </div>
+
+ echo "</table>";
+ echo "</div>";
+  ?>
