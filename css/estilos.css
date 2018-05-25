@@ -25,3 +25,6 @@ img{
 	width: 800px;
 
 }
+.ocultar{
+	display: none !important;
+}

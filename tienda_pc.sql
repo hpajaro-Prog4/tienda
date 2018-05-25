@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2018 a las 14:00:33
+-- Tiempo de generación: 25-05-2018 a las 13:56:55
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -22,21 +22,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tienda1`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `carrito`
---
-
-CREATE TABLE `carrito` (
-  `idCarrito` int(11) NOT NULL,
-  `idUsuario` int(11) DEFAULT NULL,
-  `idProducto` int(11) DEFAULT NULL,
-  `cant` int(11) DEFAULT NULL,
-  `idEstadoCarrito` int(11) DEFAULT NULL,
-  `precio` decimal(15,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -146,9 +131,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`idProducto`, `Nombre`, `idTipoProducto`, `idCategoriaProducto`, `idEstadoProducto`, `Precio`, `Imagen`, `Descripcion`, `Stock`) VALUES
-(1, 'Board P85', 8, 20, 21, '250000.00', 'board.jpg', 'AMD Dual Core', 50),
-(2, 'Diadema Genius ', 8, 23, 21, '43200.00', 'diademas.jpg', 'USB  Colores Fosforescentes', 23),
-(3, 'Monitor 19 Pulg ViewSonic', 8, 14, 21, '380000.00', 'monitor.jpg', 'LCD parlantes internos', 20);
+(1, 'Board P85', 8, 20, 21, '450000.00', 'board.jpg', 'AMD Dual Core', 20),
+(2, 'Diadema Genius ', 8, 23, 21, '43200.00', 'diademas.jpg', 'USB  Colores Fosforescentes', 24),
+(3, 'Monitor 19 Pulg ViewSonic', 8, 14, 21, '370000.00', 'monitor.jpg', 'LCD parlantes internos', 13),
+(4, 'RAM 16BG', 8, 17, 21, '190000.00', 'ram.jpg', 'DDR3', 14);
 
 -- --------------------------------------------------------
 
@@ -164,6 +150,14 @@ CREATE TABLE `usuarios` (
   `idEstadoUsuario` int(11) DEFAULT NULL,
   `idRol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `idPersona`, `usuario`, `password`, `idEstadoUsuario`, `idRol`) VALUES
+(1, 1, 'hpajaro', '81dc9bdb52d04dc20036dbd8313ed055', 24, 26),
+(2, NULL, NULL, NULL, 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,12 +215,6 @@ INSERT INTO `valorparametros` (`idValorParametro`, `idParametro`, `valor`, `orde
 --
 
 --
--- Indices de la tabla `carrito`
---
-ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`idCarrito`);
-
---
 -- Indices de la tabla `detfacturas`
 --
 ALTER TABLE `detfacturas`
@@ -278,12 +266,6 @@ ALTER TABLE `valorparametros`
 --
 
 --
--- AUTO_INCREMENT de la tabla `carrito`
---
-ALTER TABLE `carrito`
-  MODIFY `idCarrito` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `detfacturas`
 --
 ALTER TABLE `detfacturas`
@@ -311,13 +293,13 @@ ALTER TABLE `personas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `valorparametros`
